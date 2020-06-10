@@ -33,15 +33,41 @@ def merge_sort(arr):
 
 # implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
+    start2 = mid + 1
+
+    # Checks if already sorted
+    if(arr[mid] <= arr[start2]):
+        return
     
-    return arr
+    # while start < mid and 2nd < end 
+    while (start <= mid and start2 <= end):
+        # if first counter is smaller, move to next index
+        if (arr[start] <= arr[start2]):
+            start += 1
+        else:
+            # else, save larger value/index
+            value = arr[start2]
+            index = start2
+
+            # and while that index isn't the starting point, 
+            while (index != start):
+                # completely stuck. 
 
 
 def merge_sort_in_place(arr, l, r):
-     # Your code here
+    if l < r:
+        mid = ( l + r ) / 2
+        left = arr[l:]
+        right = arr[:r]
+
+        merge_sort_in_place(left, l, mid)
+        merge_sort_in_place(right, mid, r)
     
 
-    return arr
+    return merge_in_place(arr, l, mid, r)
+     
+    
+
 
 
 # STRETCH: implement the Timsort function below
